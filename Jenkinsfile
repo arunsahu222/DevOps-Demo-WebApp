@@ -3,7 +3,7 @@ pipeline {
   
   tools {
     maven "maven latest"
-    jdk 'jdk8'
+    java 'jdk8'
   }
   stage ('Initialize') {
             steps {
@@ -27,7 +27,7 @@ pipeline {
        
       }
     }
-
+        }
     stage('Deploy') {
       steps {
         echo 'Deployed'
@@ -35,4 +35,4 @@ pipeline {
     }
 
   }
-}
+
