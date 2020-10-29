@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage('Commit change') {
       steps {
-         slackSend channel: "#case-study-alerts", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+        
         echo 'Build Successful'
       }
     }
@@ -26,6 +26,7 @@ pipeline {
         
         
         sh "mvn clean compile"
+        slackSend channel: "#case-study-alerts", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
         echo 'Build Success'
       }
     }
