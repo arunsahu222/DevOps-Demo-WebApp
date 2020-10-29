@@ -16,7 +16,7 @@ pipeline {
       steps {
               sh 'mvn -Dmaven.test.failure.ignore=true install' 
               //  sh "mvn clean compile"
-               slackSend channel: "#alerts", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+               slackSend channel: "#case-study-alerts", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
         
         //echo 'Build Success'
       }
@@ -24,7 +24,7 @@ pipeline {
     
     stage('Sonarqube') {
     environment {
-        scannerHome = tool 'SonarQubeScanner'
+        scannerHome = tool 'sonarqubescanner'
     }
     steps {
         withSonarQubeEnv('sonarqube') {
