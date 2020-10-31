@@ -20,7 +20,7 @@ pipeline {
     }
     steps {
         withSonarQubeEnv('sonarqube') {
-             sh 'mvn clean package sonar:sonar'
+             sh 'mvn clean package sonar:sonar' -DskipTests=true
         }
         timeout(time: 10, unit: 'MINUTES') {
             waitForQualityGate abortPipeline: true
