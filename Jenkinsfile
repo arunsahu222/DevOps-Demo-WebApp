@@ -25,21 +25,22 @@ pipeline {
 //        }
 //    }
    stage ('Server config') {
-            steps { rtServer (
-    id: 'Artifactory-1',
+            steps { 
+              rtServer (
+    id: 'artifactory',
     url: 'https://arunsahu2222.jfrog.io/artifactory',
     // If you're using username and password:
     username: 'deploy1',
     password: '10@Storage'
-    
-    // The default value (if not configured) is 300 seconds:
-    timeout = 300
-            )}}
+
+            )
+            }
+   }
 //}
       stage ('Upload file') {
             steps {
                 rtUpload (
-                    serverId: 'Artifactory-1',
+                    serverId: 'artifactory',
                     spec: """{
                             "files": [
                                     {
