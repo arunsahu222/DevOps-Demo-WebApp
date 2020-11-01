@@ -24,11 +24,26 @@ pipeline {
   //        sh 'mvn clean package sonar:sonar -Dsonar.sources=. -Dsonar.tests=. -Dsonar.test.inclusions=**/test/java/servlet/createpage_junit.java -Dsonar.exclusions=**/test/java/servlet/createpage_junit.java -Dsonar.login=admin -Dsonar.password=admin'
 //        }
 //    }
+   stage ('Server config') {
+            steps { rtServer (
+    id: 'Artifactory-1',
+    url: 'https://arunsahu2222.jfrog.io/artifactory',
+    // If you're using username and password:
+    username: 'deploy1',
+    password: '10@Storage'
+    // If you're using Credentials ID:
+    credentialsId: 'ccrreeddeennttiiaall'
+    // If Jenkins is configured to use an http proxy, you can bypass the proxy when using this Artifactory server:
+    bypassProxy: true
+    // Configure the connection timeout (in seconds).
+    // The default value (if not configured) is 300 seconds:
+    timeout = 300
+            )}}
 //}
       stage ('Upload file') {
             steps {
                 rtUpload (
-                    serverId: 'artifactory', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    serverId: 'Artifactory-1',
                     spec: """{
                             "files": [
                                     {
