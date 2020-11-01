@@ -28,7 +28,7 @@ pipeline {
       stage ('Upload file') {
             steps {
                 rtUpload (
-                    serverId: artifactory, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    serverId: 'artifactory', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
                     spec: """{
                             "files": [
                                     {
