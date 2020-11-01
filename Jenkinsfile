@@ -50,16 +50,23 @@ pipeline {
                                 ]
                             }"""
                 )
-            }
-        }
+               rtMavenDeployer (
+                    id: "MAVEN_DEPLOYER",
+                    serverId: 'artifactory',
+                    releaseRepo: "deploy1",
+                    snapshotRepo: "deploy1"
+                )
 
-        stage ('Publish build info') {
-            steps {
-                rtPublishBuildInfo (
-                    serverId: 'artifactory'
+                rtMavenResolver (
+                    id: "MAVEN_RESOLVER",
+                    serverId: 'artifactory',
+                    releaseRepo: "deploy1",
+                    snapshotRepo: "deploy1"
                 )
             }
         }
+
+       
     
     stage('Deploy') {
       steps {
