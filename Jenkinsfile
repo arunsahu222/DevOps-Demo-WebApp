@@ -1,5 +1,5 @@
 def JENKINS_URL = "http://35.232.130.43:8080/"
-
+properties([pipelineTriggers([githubPush()])])
 pipeline {
 	
 	 
