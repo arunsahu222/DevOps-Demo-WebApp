@@ -64,7 +64,7 @@ pipeline {
                     snapshotRepo: "deploy1"
                 )
               rtPublishBuildInfo (
-    serverId: 'artifactory'
+    serverId: 'artifactory')
    
             }
         }
