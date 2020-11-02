@@ -54,13 +54,13 @@ pipeline {
                     id: "MAVEN_DEPLOYER",
                     serverId: 'artifactory',
                     releaseRepo: "libs-release-local",
-                    snapshotRepo: "deploy1"
+                    snapshotRepo: "libs-snapshot-local"
                 )
 
                 rtMavenResolver (
                     id: "MAVEN_RESOLVER",
                     serverId: 'artifactory',
-                    releaseRepo: "libs-release-local",
+                    releaseRepo: "libs-snapshot-local",
                     snapshotRepo: "deploy1"
                 )
               rtPublishBuildInfo (
