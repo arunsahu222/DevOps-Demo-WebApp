@@ -45,7 +45,7 @@ pipeline {
                             "files": [
                                     {
                                         "pattern": "*.war",
-                                        "target": "deploy1"
+                                        "target": "libs-release-local"
                                     }
                                 ]
                             }"""
@@ -63,6 +63,9 @@ pipeline {
                     releaseRepo: "deploy1",
                     snapshotRepo: "deploy1"
                 )
+              rtPublishBuildInfo (
+    serverId: 'artifactory'
+   
             }
         }
 
