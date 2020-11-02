@@ -50,6 +50,12 @@ pipeline {
                                 ]
                             }"""
                 )
+                rtMavenResolver (
+                    id: "MAVEN_RESOLVER",
+                    serverId: 'artifactory',
+                    releaseRepo: "libs-release",
+                    snapshotRepo: "libs-snapshot"
+                )
                rtMavenDeployer (
                     id: "MAVEN_DEPLOYER",
                     serverId: 'artifactory',
@@ -57,12 +63,17 @@ pipeline {
                     snapshotRepo: "libs-snapshot-local"
                 )
 
-                rtMavenResolver (
-                    id: "MAVEN_RESOLVER",
-                    serverId: 'artifactory',
-                    releaseRepo: "libs-snapshot-local",
-                    snapshotRepo: "deploy1"
-                )
+              rtMavenRun (
+    // Tool name from Jenkins configuration.
+    
+    pom: 'pom.xml',
+    goals: 'clean package',
+    // Maven options.
+    opts: '-Xms1024m -Xmx4096m',
+    resolverId: 'MAVEN_RESOLVER',
+    deployerId: 'MAVEN_DEPLOYER'
+   
+)
               rtPublishBuildInfo (
     serverId: 'artifactory')
    
