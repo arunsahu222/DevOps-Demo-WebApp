@@ -29,7 +29,7 @@ pipeline {
               slackSend channel: "#alerts", message: "Build Started:" + JENKINS_URL + "job/" + env.JOB_NAME+"/"+ env.BUILD_NUMBER
 	      
         
-        echo 'Build Done' 
+        echo 'Build Done'  
       }
     }
     
