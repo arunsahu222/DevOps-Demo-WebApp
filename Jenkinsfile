@@ -67,9 +67,7 @@ pipeline {
     // Tool name from Jenkins configuration.
     
     pom: 'pom.xml',
-    goals: 'clean package',
-    // Maven options.
-    opts: '-Xms1024m -Xmx4096m',
+    goals: 'clean package'
     resolverId: 'MAVEN_RESOLVER',
     deployerId: 'MAVEN_DEPLOYER'
    
