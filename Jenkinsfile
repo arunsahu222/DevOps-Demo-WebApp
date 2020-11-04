@@ -5,7 +5,12 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  stages{
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/arunsahu222/hello-app.git'
+      }
+    }
     stage('Building image') {
       steps{
         script {
@@ -22,10 +27,10 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
+   stage('Remove Unused docker image') {
      steps{
       sh "docker rmi $registry:$BUILD_NUMBER"
-    }
+     }
    }
   }
 }
