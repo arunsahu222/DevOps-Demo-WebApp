@@ -7,8 +7,8 @@ pipeline {
   environment {
     buildnum = currentBuild.getNumber()
     
-    jiraIssue = 'SQUAD3-2'
-    branchName = 'SQUAD3-2'
+    jiraIssue = 'SQUAD3-10'
+    branchName = 'SQUAD3-10'
     
     gitURL = "https://github.com/arunsahu222/DevOps-Demo-WebApp.git"
     gitBranch = "*/master"
