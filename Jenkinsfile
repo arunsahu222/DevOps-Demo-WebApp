@@ -71,7 +71,7 @@ pipeline {
 			deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: testUrl)], contextPath: '/QAWebapp', war: '**/*.war'
 			slackSend channel: slackChannel, message: "Deployed to Test server"
 			jiraSendDeploymentInfo environmentId: 'Test', environmentName: 'Test Env', environmentType: 'development', site: JiraSitename, state: 'successful'
-			jiraAddComment comment: 'Deployed to Test ', idOrKey: "${jiraIssue}", site: 'jirasite'
+			//jiraAddComment comment: 'Deployed to Test ', idOrKey: "${jiraIssue}", site: 'jirasite'
 		}
 	    }
 	 
@@ -121,7 +121,7 @@ pipeline {
 	      deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: ProdUrl)], contextPath: '/ProdWebapp', war: '**/*.war'
 			  slackSend channel: slackChannel, message: "Deployed to prod"
 			  jiraSendDeploymentInfo environmentId: 'Prod', environmentName: 'Production', environmentType: 'Production', site: JiraSitename , state: 'successful'
-			  	jiraAddComment comment: 'Deployed to prod', idOrKey: "${jiraIssue}", site: 'jirasite'
+			//  	jiraAddComment comment: 'Deployed to prod', idOrKey: "${jiraIssue}", site: 'jirasite'
         			
 		  }
 		  
