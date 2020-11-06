@@ -71,7 +71,7 @@ pipeline {
 			deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: testUrl)], contextPath: '/QAWebapp', war: '**/*.war'
 			slackSend channel: slackChannel, message: "Deployed to Test server"
 			jiraSendDeploymentInfo environmentId: 'Test', environmentName: 'Test Env', environmentType: 'development', site: JiraSitename, state: 'successful'
-			jiraAddComment comment: 'Deployed to Test ', idOrKey: "${jiraIssue}", site: 'jirasite1'
+		//	jiraAddComment comment: 'Deployed to Test ', idOrKey: "${jiraIssue}", site: 'jirasite1'
 		}
 	    }
 	 
@@ -133,7 +133,7 @@ pipeline {
 			   sh 'mvn test -f Acceptancetest/pom.xml'
 				publishHTML([escapeUnderscores:true,allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '\\Acceptancetest\\target\\surefire-reports', reportFiles: 'index.html', reportName: 'Sanity Test Report', reportTitles: 'HTML Report'])
 			  slackSend channel: slackChannel, message: "Sanity Test report published"
-        		//	jiraTransitionIssue idOrKey: "${jiraIssue}", input: [transition: [id: '31']] , site: 'jirasite'
+        			jiraTransitionIssue idOrKey: "${jiraIssue}", input: [transition: [id: '31']] , site: 'jirasite1'
 		  }
     }
 	
