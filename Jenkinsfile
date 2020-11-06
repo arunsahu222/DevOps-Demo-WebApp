@@ -38,7 +38,7 @@ pipeline {
   	  }
 	  
 //2. 	  
-	  
+	 
    	 stage('Build') {
      		 steps {
               		sh 'mvn -Dmaven.test.failure.ignore=true install' 
@@ -106,13 +106,14 @@ pipeline {
     			}
 	  
 //7	  
-	   //stage('Performance Test') {
-	//	 steps{
-	//		echo 'BlazeMeterTest' 
-	//		blazeMeterTest credentialsId: 'blazemeter', testId: '8487271.taurus', workspaceId: '646655'
-	//		 slackSend channel: slackChannel, message: "Performance test report published"
-	//	   }
- //  }
+	   stage('Performance Test') {
+		 steps{
+			echo 'BlazeMeterTest' 
+	  blazeMeterTest credentialsId: 'Blazemeter', testId: '8487271.taurus', workspaceId: '646655'
+			
+			 slackSend channel: slackChannel, message: "Performance test report published"
+		   }
+   }
 	  
 	  
 //8	  
