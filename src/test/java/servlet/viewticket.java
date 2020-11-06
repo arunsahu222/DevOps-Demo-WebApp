@@ -75,6 +75,7 @@ public class viewticket extends HttpServlet {
 					}
 					out.println("<table>");
 		}
+		
 		catch(ClassNotFoundException cnfe)
 		{
 			out.println("class not found");
