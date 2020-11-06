@@ -133,7 +133,7 @@ pipeline {
 			   sh 'mvn test -f Acceptancetest/pom.xml'
 				publishHTML([escapeUnderscores:true,allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '\\Acceptancetest\\target\\surefire-reports', reportFiles: 'index.html', reportName: 'Sanity Test Report', reportTitles: 'HTML Report'])
 			  slackSend channel: slackChannel, message: "Sanity Test report published"
-        			jiraTransitionIssue idOrKey: "${jiraIssue}", input: [transition: [id: '31']] , site: 'jirasite'
+        		//	jiraTransitionIssue idOrKey: "${jiraIssue}", input: [transition: [id: '31']] , site: 'jirasite'
 		  }
     }
 	
